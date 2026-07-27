@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="CYBER CARNIVAL: The premier futuristic cybersecurity symposium. Join Hackathons, CTF competitions, Bug Bounties, Workshops, and Tech Talks. Enter the digital battlefield.">
+    <title>CYBER CARNIVAL | Enter The Digital Battlefield</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Space+Grotesk:wght@300;400;500;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="cyber-theme">
+    <!-- Cyberpunk Decorative Overlays -->
+    <div class="scanlines"></div>
+    <div class="noise-overlay"></div>
+    <div class="glow-cursor" id="custom-cursor"></div>
+
+    <!-- Navigation Header -->
+    <header class="navbar" id="site-header">
+        <div class="nav-container">
+            <a href="#home" class="nav-logo" id="nav-logo">
+                <span class="glitch-text" data-text="CYBER">CYBER</span>
+                <span class="accent-color logo-space">CARNIVAL</span>
+            </a>
+            <nav class="nav-links" id="nav-menu">
+                <a href="#home" class="nav-link active">HOME</a>
+                <a href="#events" class="nav-link">EVENTS</a>
+                <a href="#about" class="nav-link">ABOUT</a>
+                <a href="#timeline" class="nav-link">TIMELINE</a>
+                <a href="#leaderboard" class="nav-link">LIVE FEED</a>
+                <a href="#sponsors" class="nav-link">SPONSORS</a>
+                <a href="#faq" class="nav-link">FAQ</a>
+            </nav>
+            <button class="nav-cta-btn btn-magnetic" id="nav-register-btn">
+                <span class="btn-brackets">[</span>
+                <span class="btn-text">REGISTER NOW</span>
+                <span class="btn-brackets">]</span>
+            </button>
+            <!-- Mobile Menu Toggle -->
+            <button class="mobile-toggle" id="menu-toggle" aria-label="Toggle Menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="hero-section">
+            <!-- Canvas Elements for Grid & Globe Backgrounds -->
+            <canvas id="grid-canvas" class="hero-canvas-grid"></canvas>
+            <div class="hero-globe-container">
+                <canvas id="globe-canvas" class="hero-canvas-globe"></canvas>
+            </div>
+
+            <!-- HUD/Telemetry Overlay Details -->
+            <div class="hud-frame top-left">SYS_STATUS: ACTIVE // LATENCY: 12MS</div>
+            <div class="hud-frame top-right">SECTOR: 0x4F // BATTLEGROUND_ONLINE</div>
+            <div class="hud-frame bottom-left">SECURE_CHANNEL: SHIELDED</div>
+            <div class="hud-frame bottom-right">COORD: 35.6895° N, 139.6917° E</div>
+            <div class="hud-lines"></div>
+            <div class="hud-crosshair"></div>
+
+            <div class="hero-content">
+                <div class="cyber-badge animate-flicker">
+                    <span class="badge-dot"></span> SECURE NETWORK NODE OVERWATCH
+                </div>
+                <h1 class="hero-title glitch-heading" data-text="CYBER CARNIVAL">CYBER CARNIVAL</h1>
+                <h2 class="hero-subtitle">ENTER THE DIGITAL BATTLEFIELD</h2>
+                <p class="hero-description">
+                    A cybersecurity symposium where hackers, developers, researchers, and security enthusiasts come together to compete, learn, exploit, and defend.
+                </p>
+                <div class="hero-tags">
+                    <span>CYBERSECURITY</span>
+                    <span class="divider">•</span>
+                    <span>COMPETITION</span>
+                    <span class="divider">•</span>
+                    <span>INNOVATION</span>
+                </div>
+                <div class="hero-cta-container">
+                    <button class="btn btn-primary btn-magnetic" id="hero-register-btn">
+                        <span class="btn-glow"></span>
+                        <span class="btn-inner">REGISTER NOW</span>
+                    </button>
+                    <a href="#events" class="btn btn-secondary btn-magnetic" id="hero-explore-btn">
+                        <span class="btn-inner">EXPLORE EVENTS</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Scroll Indicator -->
+            <div class="scroll-indicator">
+                <span class="scroll-text font-mono">SCROLL TO EXPAND DATA</span>
+                <div class="scroll-line">
+                    <div class="scroll-ball"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Events Section -->
+        <section id="events" class="events-section section-padding">
+            <div class="section-header container">
+                <div class="section-badge">// BATTLEGROUND OPTIONS</div>
+                <h2 class="section-title">CHOOSE YOUR BATTLEFIELD</h2>
+                <div class="title-underline"></div>
+            </div>
+
+            <div class="events-grid container">
+                <!-- Card 1: Hackathon -->
+                <div class="event-card border-glow" data-tilt>
+                    <div class="card-corner top-left-corner"></div>
+                    <div class="card-corner top-right-corner"></div>
+                    <div class="card-corner bottom-left-corner"></div>
+                    <div class="card-corner bottom-right-corner"></div>
+                    
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="16 18 22 12 16 6"></polyline>
+                            <polyline points="8 6 2 12 8 18"></polyline>
+                            <line x1="12" y1="2" x2="12" y2="22"></line>
+                        </svg>
+                    </div>
+                    <div class="card-badge">SYS_BUILD</div>
+                    <h3 class="card-title">HACKATHON</h3>
+                    <h4 class="card-slogan">"Build. Break. Innovate."</h4>
+                    <p class="card-desc">
+                        Build innovative solutions to real-world problems using cutting-edge technology and cyber security principles. Collaborate under pressure and code the future.
+                    </p>
+                    <button class="card-btn event-trigger-btn" data-event="Hackathon">
+                        <span class="btn-inner">ENTER HACKATHON</span>
+                    </button>
+                </div>
+
+                <!-- Card 2: Capture The Flag -->
+                <div class="event-card border-glow" data-tilt>
+                    <div class="card-corner top-left-corner"></div>
+                    <div class="card-corner top-right-corner"></div>
+                    <div class="card-corner bottom-left-corner"></div>
+                    <div class="card-corner bottom-right-corner"></div>
+                    
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"></path>
+                            <line x1="4" y1="22" x2="4" y2="15"></line>
+                        </svg>
+                    </div>
+                    <div class="card-badge">SYS_ATTACK</div>
+                    <h3 class="card-title">CAPTURE THE FLAG</h3>
+                    <h4 class="card-slogan">"Find the Flag. Own the Challenge."</h4>
+                    <p class="card-desc">
+                        Jeopardy-style hacking sandbox. Crack challenges in Web Exploitation, Cryptography, Reverse Engineering, Forensics, OSINT, and Binary Exploitation (Pwn).
+                    </p>
+                    <button class="card-btn event-trigger-btn" data-event="Capture The Flag">
+                        <span class="btn-inner">JOIN THE CTF</span>
+                    </button>
+                </div>
+
+                <!-- Card 3: Bug Bounty -->
+                <div class="event-card border-glow" data-tilt>
+                    <div class="card-corner top-left-corner"></div>
+                    <div class="card-corner top-right-corner"></div>
+                    <div class="card-corner bottom-left-corner"></div>
+                    <div class="card-corner bottom-right-corner"></div>
+                    
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                            <path d="M12 2v9"></path>
+                            <path d="M8 5h8"></path>
+                            <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                        </svg>
+                    </div>
+                    <div class="card-badge">SYS_HUNT</div>
+                    <h3 class="card-title">BUG BOUNTY</h3>
+                    <h4 class="card-slogan">"Think Like an Attacker."</h4>
+                    <p class="card-desc">
+                        Identify and document vulnerabilities. Attack realistic web networks, uncover critical system vulnerabilities, exploit zero-days, and secure bounties.
+                    </p>
+                    <button class="card-btn event-trigger-btn" data-event="Bug Bounty">
+                        <span class="btn-inner">HUNT FOR BUGS</span>
+                    </button>
+                </div>
+
+                <!-- Card 4: Cyber Workshops -->
+                <div class="event-card border-glow" data-tilt>
+                    <div class="card-corner top-left-corner"></div>
+                    <div class="card-corner top-right-corner"></div>
+                    <div class="card-corner bottom-left-corner"></div>
+                    <div class="card-corner bottom-right-corner"></div>
+                    
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <polyline points="12 6 12 12 16 14"></polyline>
+                        </svg>
+                    </div>
+                    <div class="card-badge">SYS_DEFEND</div>
+                    <h3 class="card-title">CYBER WORKSHOPS</h3>
+                    <h4 class="card-slogan">"Learn From The Defenders."</h4>
+                    <p class="card-desc">
+                        Hands-on operational sessions. Deep dive into ethical hacking methodologies, hardware penetration testing, forensics, cloud posture, and AI security.
+                    </p>
+                    <button class="card-btn event-trigger-btn" data-event="Cyber Workshops">
+                        <span class="btn-inner">EXPLORE WORKSHOPS</span>
+                    </button>
+                </div>
+
+                <!-- Card 5: Tech Talks -->
+                <div class="event-card border-glow" data-tilt>
+                    <div class="card-corner top-left-corner"></div>
+                    <div class="card-corner top-right-corner"></div>
+                    <div class="card-corner bottom-left-corner"></div>
+                    <div class="card-corner bottom-right-corner"></div>
+                    
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                        </svg>
+                    </div>
+                    <div class="card-badge">SYS_VISION</div>
+                    <h3 class="card-title">TECH TALKS</h3>
+                    <h4 class="card-slogan">"The Future Is Under Attack."</h4>
+                    <p class="card-desc">
+                        Visionary panels and individual segments. Listen to industry veterans discuss national security threats, ransomware economics, and standard hardening frameworks.
+                    </p>
+                    <button class="card-btn event-trigger-btn" data-event="Tech Talks">
+                        <span class="btn-inner">VIEW SPEAKERS</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="about-section section-padding">
+            <div class="container about-container">
+                <div class="about-content">
+                    <div class="section-badge">// CORE MISSION</div>
+                    <h2 class="section-title">MORE THAN A SYMPOSIUM.</h2>
+                    <div class="title-underline"></div>
+                    <p class="about-text">
+                        CYBER CARNIVAL is a collaborative ecosystem designed to test the limits of your cybersecurity skills. Across structured battlefields, we unite red teams, blue teams, researchers, and developers in a unified mission to patch, exploit, secure, and defend tomorrow's infrastructure.
+                    </p>
+                    <p class="about-text">
+                        Whether you are a seasoned exploit researcher or a curious junior programmer, our workshops and live hacking modules provide the ultimate platform to showcase talent, discover vulnerabilities, and gain critical insights from top-tier security executives.
+                    </p>
+                </div>
+
+                <!-- Animated Statistics Counters -->
+                <div class="about-stats" id="stats-container">
+                    <div class="stat-box">
+                        <div class="stat-gauge-wrapper">
+                            <svg class="stat-gauge" viewBox="0 0 100 100">
+                                <circle class="gauge-bg" cx="50" cy="50" r="42"></circle>
+                                <circle class="gauge-bar gauge-purple" cx="50" cy="50" r="42" id="gauge-comp-circle"></circle>
+                            </svg>
+                            <div class="stat-number font-mono" id="stat-competition">0</div>
+                        </div>
+                        <div class="stat-label">HOURS OF COMPETITION</div>
+                    </div>
+
+                    <div class="stat-box">
+                        <div class="stat-gauge-wrapper">
+                            <svg class="stat-gauge" viewBox="0 0 100 100">
+                                <circle class="gauge-bg" cx="50" cy="50" r="42"></circle>
+                                <circle class="gauge-bar gauge-cyan" cx="50" cy="50" r="42" id="gauge-enth-circle"></circle>
+                            </svg>
+                            <div class="stat-number font-mono" id="stat-enthusiasts">0</div>
+                        </div>
+                        <div class="stat-label">CYBER ENTHUSIASTS</div>
+                    </div>
+
+                    <div class="stat-box">
+                        <div class="stat-gauge-wrapper">
+                            <svg class="stat-gauge" viewBox="0 0 100 100">
+                                <circle class="gauge-bg" cx="50" cy="50" r="42"></circle>
+                                <circle class="gauge-bar gauge-purple" cx="50" cy="50" r="42" id="gauge-chal-circle"></circle>
+                            </svg>
+                            <div class="stat-number font-mono" id="stat-challenges">0</div>
+                        </div>
+                        <div class="stat-label">DESIGNED CHALLENGES</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Timeline Section -->
+        <section id="timeline" class="timeline-section section-padding">
+            <div class="section-header container">
+                <div class="section-badge">// OPERATIONS MAP</div>
+                <h2 class="section-title">OPERATIONAL TIMELINE</h2>
+                <div class="title-underline"></div>
+            </div>
+
+            <!-- Timeline Horizontal Scroller -->
+            <div class="timeline-outer-container container" id="timeline-scroll-area">
+                <div class="timeline-horizontal">
+                    <div class="timeline-progress-line" id="timeline-line"></div>
+                    
+                    <!-- Node 1 -->
+                    <div class="timeline-node" data-node="0">
+                        <div class="node-glow"></div>
+                        <div class="node-number font-mono">01</div>
+                        <div class="node-content">
+                            <h4 class="node-title">REGISTRATION OPEN</h4>
+                            <p class="node-desc">Sign up and form your combat units. Complete validation.</p>
+                            <span class="node-date font-mono">JULY 24 - AUG 15</span>
+                        </div>
+                    </div>
+
+                    <!-- Node 2 -->
+                    <div class="timeline-node" data-node="1">
+                        <div class="node-glow"></div>
+                        <div class="node-number font-mono">02</div>
+                        <div class="node-content">
+                            <h4 class="node-title">QUALIFIERS STAGE</h4>
+                            <p class="node-desc">Online challenges in CTF web portals and algorithm filters.</p>
+                            <span class="node-date font-mono">AUGUST 18 - 20</span>
+                        </div>
+                    </div>
+
+                    <!-- Node 3 -->
+                    <div class="timeline-node" data-node="2">
+                        <div class="node-glow"></div>
+                        <div class="node-number font-mono">03</div>
+                        <div class="node-content">
+                            <h4 class="node-title">THE BATTLE BEGINS</h4>
+                            <p class="node-desc">Opening ceremony & live event keys released on site.</p>
+                            <span class="node-date font-mono">AUGUST 25, 09:00 AM</span>
+                        </div>
+                    </div>
+
+                    <!-- Node 4 -->
+                    <div class="timeline-node" data-node="3">
+                        <div class="node-glow"></div>
+                        <div class="node-number font-mono">04</div>
+                        <div class="node-content">
+                            <h4 class="node-title">FINAL SHOWDOWN</h4>
+                            <p class="node-desc">Onsite hardware hackathon defense and live pwn challenges.</p>
+                            <span class="node-date font-mono">AUGUST 26, 02:00 PM</span>
+                        </div>
+                    </div>
+
+                    <!-- Node 5 -->
+                    <div class="timeline-node" data-node="4">
+                        <div class="node-glow"></div>
+                        <div class="node-number font-mono">05</div>
+                        <div class="node-content">
+                            <h4 class="node-title">WINNERS ANNOUNCED</h4>
+                            <p class="node-desc">Bounty payouts, closing statements, and server shutdown.</p>
+                            <span class="node-date font-mono">AUGUST 26, 06:00 PM</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Command Center (Leaderboard / Live Feed) -->
+        <section id="leaderboard" class="command-center-section section-padding">
+            <div class="section-header container">
+                <div class="section-badge">// COMMAND CENTER TELEMETRY</div>
+                <h2 class="section-title">LIVE SYSTEMS OVERWATCH</h2>
+                <div class="title-underline"></div>
+            </div>
+
+            <div class="command-grid container">
+                <!-- Left Panel: Live Terminal Logs -->
+                <div class="terminal-panel border-glow">
+                    <div class="panel-header">
+                        <div class="header-dots">
+                            <span class="dot red"></span>
+                            <span class="dot yellow"></span>
+                            <span class="dot green"></span>
+                        </div>
+                        <div class="panel-title font-mono">SYS_LOG: live_activity_monitor</div>
+                        <div class="panel-indicator font-mono blink">RECORDING</div>
+                    </div>
+                    <div class="panel-body font-mono" id="live-terminal-feed">
+                        <!-- Content auto-injected by JS -->
+                        <div class="log-line"><span class="log-time">[22:04:12]</span> <span class="log-info">[SYS]</span> Command Overwatch Online. Initializing terminal streams...</div>
+                        <div class="log-line"><span class="log-time">[22:04:15]</span> <span class="log-info">[SYS]</span> Listening to active battlefield nodes. Stand by...</div>
+                    </div>
+                </div>
+
+                <!-- Right Panel: Live Leaderboard -->
+                <div class="leaderboard-panel border-glow">
+                    <div class="panel-header">
+                        <div class="header-dots">
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                        </div>
+                        <div class="panel-title font-mono">CTF_BOARD: live_rankings</div>
+                        <div class="panel-status font-mono">SYNC: OK</div>
+                    </div>
+                    <div class="panel-body">
+                        <table class="leaderboard-table font-mono">
+                            <thead>
+                                <tr>
+                                    <th>RANK</th>
+                                    <th>CODENAME / TEAM</th>
+                                    <th>SOLVED</th>
+                                    <th>SCORE</th>
+                                    <th>STATUS</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="rank-first">
+                                    <td>01</td>
+                                    <td class="team-name">TEAM_ZERO_DAY</td>
+                                    <td>14/15</td>
+                                    <td class="accent-color font-bold">2950</td>
+                                    <td><span class="pulse-indicator online"></span>ACTIVE</td>
+                                </tr>
+                                <tr class="rank-second">
+                                    <td>02</td>
+                                    <td class="team-name">BUFF_OVERFLOW</td>
+                                    <td>12/15</td>
+                                    <td class="accent-color">2500</td>
+                                    <td><span class="pulse-indicator online"></span>ACTIVE</td>
+                                </tr>
+                                <tr class="rank-third">
+                                    <td>03</td>
+                                    <td class="team-name">SYN_ATTACKERS</td>
+                                    <td>11/15</td>
+                                    <td class="accent-color">2350</td>
+                                    <td><span class="pulse-indicator online"></span>ACTIVE</td>
+                                </tr>
+                                <tr>
+                                    <td>04</td>
+                                    <td class="team-name">NULL_POINTER</td>
+                                    <td>10/15</td>
+                                    <td>2000</td>
+                                    <td><span class="pulse-indicator online"></span>ACTIVE</td>
+                                </tr>
+                                <tr>
+                                    <td>05</td>
+                                    <td class="team-name">SUDO_SUccess</td>
+                                    <td>09/15</td>
+                                    <td>1850</td>
+                                    <td><span class="pulse-indicator idle"></span>IDLE</td>
+                                </tr>
+                                <tr>
+                                    <td>06</td>
+                                    <td class="team-name">HACKER_MANS</td>
+                                    <td>08/15</td>
+                                    <td>1600</td>
+                                    <td><span class="pulse-indicator online"></span>ACTIVE</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sponsors Section -->
+        <section id="sponsors" class="sponsors-section section-padding">
+            <div class="section-header container">
+                <div class="section-badge">// COGNITIVE BACKING</div>
+                <h2 class="section-title">POWERED BY</h2>
+                <div class="title-underline"></div>
+            </div>
+
+            <div class="sponsors-grid container">
+                <div class="sponsor-card">
+                    <div class="sponsor-border"></div>
+                    <div class="sponsor-content font-mono">
+                        <span class="sponsor-glow"></span>
+                        <div class="sponsor-logo">APEX_NETWORKS</div>
+                    </div>
+                </div>
+                <div class="sponsor-card">
+                    <div class="sponsor-border"></div>
+                    <div class="sponsor-content font-mono">
+                        <span class="sponsor-glow"></span>
+                        <div class="sponsor-logo">PRISM_SEC</div>
+                    </div>
+                </div>
+                <div class="sponsor-card">
+                    <div class="sponsor-border"></div>
+                    <div class="sponsor-content font-mono">
+                        <span class="sponsor-glow"></span>
+                        <div class="sponsor-logo">KRONOS_AI</div>
+                    </div>
+                </div>
+                <div class="sponsor-card">
+                    <div class="sponsor-border"></div>
+                    <div class="sponsor-content font-mono">
+                        <span class="sponsor-glow"></span>
+                        <div class="sponsor-logo">VORTEX_CYBER</div>
+                    </div>
+                </div>
+                <div class="sponsor-card">
+                    <div class="sponsor-border"></div>
+                    <div class="sponsor-content font-mono">
+                        <span class="sponsor-glow"></span>
+                        <div class="sponsor-logo">NEXUS_SYSTEMS</div>
+                    </div>
+                </div>
+                <div class="sponsor-card">
+                    <div class="sponsor-border"></div>
+                    <div class="sponsor-content font-mono">
+                        <span class="sponsor-glow"></span>
+                        <div class="sponsor-logo">OBLIVION_LABS</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section id="faq" class="faq-section section-padding">
+            <div class="section-header container">
+                <div class="section-badge">// INTEL QUERY</div>
+                <h2 class="section-title">FREQUENT QUESTIONS</h2>
+                <div class="title-underline"></div>
+            </div>
+
+            <div class="faq-accordion container">
+                <div class="faq-item border-glow">
+                    <button class="faq-question font-mono" aria-expanded="false">
+                        <span>Q: WHO CAN PARTICIPATE IN CYBER CARNIVAL?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>CYBER CARNIVAL is open to students, developers, researchers, ethical hackers, and security enthusiasts of all skill levels. If you are passionate about security, code, and debugging infrastructure, you are welcome to enter the battlefield.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item border-glow">
+                    <button class="faq-question font-mono" aria-expanded="false">
+                        <span>Q: HOW DO THE CTF AND HACKATHON WORK TOGETHER?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>The CTF runs as a continuous jeopardy-style hacking challenge focused on exploiting specifically vulnerable systems. The Hackathon is a product development sprint where teams build utility prototypes to address critical defensive challenges. You may participate in either or both, provided schedules permit.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item border-glow">
+                    <button class="faq-question font-mono" aria-expanded="false">
+                        <span>Q: ARE THERE ENTRY FEES OR HARDWARE REQUIREMENTS?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Registration and entry are completely free. You must bring your own development terminal (laptop) equipped with standard penetration testing tools or virtualization software suitable for CTF payloads.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item border-glow">
+                    <button class="faq-question font-mono" aria-expanded="false">
+                        <span>Q: WHAT KIND OF BOUNTIES AND PRIZES ARE OFFERED?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>We feature a comprehensive cash prize pool for top-performing teams across the CTF and Hackathon, alongside targeted Bug Bounty payouts for approved security disclosures in our designated test-range sandbox.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Final Registration Gate -->
+        <section class="cta-gate-section section-padding">
+            <div class="gate-portal-bg">
+                <div class="portal-ring ring-1"></div>
+                <div class="portal-ring ring-2"></div>
+                <div class="portal-ring ring-3"></div>
+            </div>
+            
+            <div class="container gate-content text-center">
+                <h2 class="gate-title glitch-heading" data-text="READY TO ENTER THE MATRIX?">READY TO ENTER THE MATRIX?</h2>
+                <p class="gate-text">
+                    Your skills are your weapon. Your curiosity is your advantage. The battlefield awaits your authentication.
+                </p>
+                <button class="btn btn-primary btn-large btn-magnetic" id="gate-register-btn">
+                    <span class="btn-glow"></span>
+                    <span class="btn-inner">INITIALIZE REGISTRATION</span>
+                </button>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="cyber-footer">
+        <div class="container footer-grid">
+            <div class="footer-info">
+                <h3 class="footer-logo font-mono">CYBER CARNIVAL</h3>
+                <p class="footer-desc">
+                    An elite symposium designed to test operational cybersecurity limits. Run and maintained by the Digital Defiance Union.
+                </p>
+                <div class="system-status font-mono">
+                    <span class="status-indicator online animate-flicker"></span> CORE SYSTEMS: OPERATIONAL
+                </div>
+            </div>
+
+            <div class="footer-links">
+                <h4 class="footer-title font-mono">CHANNELS</h4>
+                <div class="link-grid">
+                    <a href="#home">Home</a>
+                    <a href="#events">Events</a>
+                    <a href="#timeline">Timeline</a>
+                    <a href="#leaderboard">Live Feed</a>
+                </div>
+            </div>
+
+            <div class="footer-socials">
+                <h4 class="footer-title font-mono">SECURITY TELEMETRY</h4>
+                <p class="telemetry-log font-mono">
+                    IP: 192.168.42.99<br>
+                    PORT: 8080<br>
+                    PROTOCOL: SECURE_WS
+                </p>
+            </div>
+        </div>
+
+        <div class="footer-bottom text-center">
+            <p class="copyright font-mono">&copy; 2026 CYBER CARNIVAL. ALL RIGHTS PRESERVED // DECRYPT_KEY: 0x9D4EDF</p>
+        </div>
+    </footer>
+
+    <!-- Interactive Cyber Terminal Registration Modal -->
+    <div class="modal-overlay" id="register-modal">
+        <div class="terminal-modal border-glow">
+            <div class="terminal-header">
+                <div class="terminal-dots">
+                    <span class="dot red"></span>
+                    <span class="dot yellow"></span>
+                    <span class="dot green"></span>
+                </div>
+                <div class="terminal-title font-mono">SECURE_REGISTRATION: node_enrollment.sh</div>
+                <button class="terminal-close" id="modal-close" aria-label="Close Modal">&times;</button>
+            </div>
+            
+            <div class="terminal-body font-mono" id="modal-terminal-content">
+                <div class="terminal-intro">
+                    <p>=========================================================</p>
+                    <p class="accent-color">CYBER CARNIVAL SECURE REGISTRATION NODE</p>
+                    <p>AUTHORIZED ACCESS ONLY. ALL INPUTS ARE SHIELDED.</p>
+                    <p>=========================================================</p>
+                </div>
+                
+                <div class="terminal-interactive-flow" id="terminal-flow">
+                    <!-- Dynamic interactive inputs injected by JS -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main JavaScript -->
+    <script src="main.js"></script>
+</body>
+</html>
