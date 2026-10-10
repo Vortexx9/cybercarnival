@@ -3,17 +3,15 @@ import json
 import math
 from fastapi import FastAPI, Request
 from fastapi.responses import JSONResponse
-from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
 
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["*"],
-    allow_credentials=False,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
+CORS_HEADERS = {
+    "Access-Control-Allow-Origin": "*",
+    "Access-Control-Allow-Methods": "POST, GET, OPTIONS",
+    "Access-Control-Allow-Headers": "Content-Type, Authorization",
+    "Access-Control-Expose-Headers": "Access-Control-Allow-Origin",
+}
 
 def calculate_p95(values):
     if not values:
@@ -34,23 +32,21 @@ if os.path.exists(json_path):
     with open(json_path, "r", encoding="utf-8") as f:
         telemetry = json.load(f)
 
-@app.options("/{full_path:path}")
-async def options_handler(full_path: str):
-    return JSONResponse(
-        content={},
-        headers={
-            "Access-Control-Allow-Origin": "*",
-            "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
-            "Access-Control-Allow-Headers": "*",
-        }
-    )
+@app.middleware("http")
+async def add_cors_headers(request: Request, call_next):
+    if request.method == "OPTIONS":
+        return JSONResponse(content={}, headers=CORS_HEADERS)
+    response = await call_next(request)
+    for key, value in CORS_HEADERS.items():
+        response.headers[key] = value
+    return response
 
 @app.post("/{full_path:path}")
 async def handle_post(request: Request, full_path: str = ""):
     try:
         body = await request.json()
     except Exception:
-        return JSONResponse({"regions": []}, headers={"Access-Control-Allow-Origin": "*"})
+        return JSONResponse({"regions": []}, headers=CORS_HEADERS)
 
     regions_req = body.get("regions", [])
     threshold_ms = float(body.get("threshold_ms", 180))
@@ -77,14 +73,11 @@ async def handle_post(request: Request, full_path: str = ""):
             "breaches": breaches
         })
 
-    return JSONResponse(
-        content={"regions": res_list},
-        headers={"Access-Control-Allow-Origin": "*"}
-    )
+    return JSONResponse(content={"regions": res_list}, headers=CORS_HEADERS)
 
 @app.get("/{full_path:path}")
 async def handle_get(full_path: str = ""):
     return JSONResponse(
-        {"status": "ok", "message": "POST to this endpoint with {regions, threshold_ms}"},
-        headers={"Access-Control-Allow-Origin": "*"}
+        {"status": "ok"},
+        headers=CORS_HEADERS
     )
