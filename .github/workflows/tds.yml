@@ -1,0 +1,13 @@
+name: TDS Verification Workflow
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  tds-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 24f2005959@ds.study.iitm.ac.in
+        run: echo "Verifying TDS GitHub Action"
