@@ -1,23 +1,19 @@
 import os
 import json
 import math
-from fastapi import FastAPI, Request, Response
+from fastapi import FastAPI, Request
+from fastapi.responses import JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
-from pydantic import BaseModel
 
 app = FastAPI()
 
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
-    allow_credentials=True,
+    allow_credentials=False,
     allow_methods=["*"],
     allow_headers=["*"],
 )
-
-class Payload(BaseModel):
-    regions: list[str]
-    threshold_ms: float
 
 def calculate_p95(values):
     if not values:
@@ -32,29 +28,29 @@ def calculate_p95(values):
 
 current_dir = os.path.dirname(os.path.abspath(__file__))
 json_path = os.path.join(current_dir, "q-vercel-latency.json")
-if not os.path.exists(json_path):
-    json_path = os.path.join(current_dir, "..", "q-vercel-latency.json")
 
 telemetry = []
 if os.path.exists(json_path):
     with open(json_path, "r", encoding="utf-8") as f:
         telemetry = json.load(f)
 
-@app.get("/{full_path:path}")
-@app.post("/{full_path:path}")
-@app.api_route("/{full_path:path}", methods=["GET", "POST", "OPTIONS"])
-async def handle_request(request: Request, response: Response):
-    response.headers["Access-Control-Allow-Origin"] = "*"
-    
-    if request.method == "OPTIONS":
-        response.headers["Access-Control-Allow-Methods"] = "*"
-        response.headers["Access-Control-Allow-Headers"] = "*"
-        return {}
+@app.options("/{full_path:path}")
+async def options_handler(full_path: str):
+    return JSONResponse(
+        content={},
+        headers={
+            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
+            "Access-Control-Allow-Headers": "*",
+        }
+    )
 
+@app.post("/{full_path:path}")
+async def handle_post(request: Request, full_path: str = ""):
     try:
         body = await request.json()
     except Exception:
-        return {"regions": []}
+        return JSONResponse({"regions": []}, headers={"Access-Control-Allow-Origin": "*"})
 
     regions_req = body.get("regions", [])
     threshold_ms = float(body.get("threshold_ms", 180))
@@ -64,14 +60,14 @@ async def handle_request(request: Request, response: Response):
         matched = [f for f in telemetry if f.get("region") == reg]
         if not matched:
             continue
-        
+
         latencies = [f["latency_ms"] for f in matched]
         uptimes = [f["uptime_pct"] for f in matched]
 
         avg_lat = round(sum(latencies) / len(latencies), 2)
         p95_lat = round(calculate_p95(latencies), 2)
         avg_up = round(sum(uptimes) / len(uptimes), 3)
-        breaches = sum(1 for l in latencies if l > threshold_ms)
+        breaches = sum(1 for la in latencies if la > threshold_ms)
 
         res_list.append({
             "region": reg,
@@ -81,4 +77,14 @@ async def handle_request(request: Request, response: Response):
             "breaches": breaches
         })
 
-    return {"regions": res_list}
+    return JSONResponse(
+        content={"regions": res_list},
+        headers={"Access-Control-Allow-Origin": "*"}
+    )
+
+@app.get("/{full_path:path}")
+async def handle_get(full_path: str = ""):
+    return JSONResponse(
+        {"status": "ok", "message": "POST to this endpoint with {regions, threshold_ms}"},
+        headers={"Access-Control-Allow-Origin": "*"}
+    )
